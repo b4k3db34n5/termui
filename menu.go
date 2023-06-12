@@ -17,13 +17,15 @@ func RunTerm() error {
 	menuList := widgets.NewList()
 	menuList.Title = " MENU "
 	menuList.Rows = []string{
-		"[STOCK INFO](fg:blue)",
+		"[STOCKS](fg:green)",
+		"[CRYPTO](fg:yellow)",
 		"[EXIT](fg:red)",
 	}
 	menuList.WrapText = false
-	menuList.BorderStyle.Fg = ui.ColorBlue
-	menuList.SetRect(0, 0, 25, 4)
-	menuList.SelectedRowStyle.Fg = ui.ColorGreen
+	menuList.TitleStyle.Fg = ui.ColorCyan
+	menuList.BorderStyle.Fg = ui.ColorCyan
+	menuList.SelectedRowStyle.Modifier = ui.ModifierBold
+	menuList.SetRect(0, 0, 25, 5)
 
 	ui.Render(menuList)
 
@@ -38,7 +40,6 @@ func RunTerm() error {
 		case "<Up>":
 			menuList.ScrollUp()
 		}
-
 		ui.Render(menuList)
 	}
 }
