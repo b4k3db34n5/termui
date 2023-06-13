@@ -33,12 +33,16 @@ func RunTerm() error {
 	for {
 		e := <-uiEvents
 		switch e.ID {
-		case "q":
-			return nil
 		case "<Down>":
 			menuList.ScrollDown()
 		case "<Up>":
 			menuList.ScrollUp()
+		case "<Enter>":
+			if menuList.SelectedRow == 0 {
+			} else if menuList.SelectedRow == 1 {
+			} else if menuList.SelectedRow == 2 {
+				return nil
+			}
 		}
 		ui.Render(menuList)
 	}
